@@ -1,6 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, Unique} from 'typeorm';
 
 @Entity({name: 'link'})
+@Unique(['LINK'])
 export class Link extends BaseEntity{
     @PrimaryGeneratedColumn()
     ID: number;

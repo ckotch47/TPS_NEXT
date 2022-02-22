@@ -1,0 +1,17 @@
+{
+  "description": "my scroller auto",
+  "manifest_version": 2,
+  "name": "scroller_auto",
+  "version": "1.0001",
+
+  "permissions": [
+    "https://*/*",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+
+  "background": {
+    "scripts": ["background.js", "jquery.js"]
+  }
+}
