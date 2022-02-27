@@ -28,18 +28,18 @@ describe('AppController (e2e)',  () => {
   });
 
   it('/linklis (GET)', async () => {
+
     let temp = await myApp.get('/linklist');
     expect(temp).not.toBeUndefined();
     expect(temp.body.length).not.toBe(0);
     expect(temp.body).toEqual(expect.any(Object));
     expect(temp.statusCode).toBe(200);
-
   });
 
   it('/addlink ', async () =>{
     let temp = await myApp.post('/addlink').send({'links':'1234-mobile.mp4'});
     expect(temp.body.LINK).toEqual(expect.any(String));
     temp = await myApp.post('/deletebyid').send({'id':temp.body.ID});
-    console.log(temp);
+    // console.log(temp);
   });
 });
