@@ -1,15 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
 import { AppModule } from './app.module';
-import { Entity, PrimaryColumn, Column } from "typeorm";
 import { AppController} from "./app.controller";
 import { AppService} from "./app.service";
-import objectContaining = jasmine.objectContaining;
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   let appController: AppController;
+
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
