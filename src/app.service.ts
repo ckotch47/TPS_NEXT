@@ -55,6 +55,55 @@ export class AppService {
       return e;
     }
   };
+
+  async get_link_offset(body: any){
+    try {
+      return await Link.find({
+        where: {PUBLISHED:0},
+        take: body.query.take,
+        skip: body.query.offset
+      });
+    }
+    catch (e){
+      return e;
+    }
+  };
+
+  async get_count(param){
+    let temp;
+    try {
+      switch (param){
+        case "published": // all not publish links
+          temp =  Link.getRepository()
+              .createQueryBuilder('link')
+              .where('link.PUBLISHED = 0')
+              .getCount();
+          break;
+
+        case 'topublish': // all like link to publish bot
+          temp =  Link.getRepository()
+              .createQueryBuilder('link')
+              .where('link.TOPUBLISH = 1 AND link.PUBLISHED = 0')
+              .getCount();
+          break;
+
+        case 'alllinks': // all link in to base
+          temp =  Link.getRepository()
+              .createQueryBuilder('link')
+              .where('')
+              .getCount();
+          break;
+
+        default:
+          return {'msg':'0'}
+      }
+      return temp;
+    }
+    catch (e){
+      return e;
+    }
+  }
+
   async delete_by_id(body: any){
     try {
       return await Link.delete(body.id);
