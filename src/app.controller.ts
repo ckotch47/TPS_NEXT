@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Get, Post, Req} from '@nestjs/common';
 import {AppService} from './app.service';
 import {Link} from "./link/link.entity";
 import {BaseEntity} from "typeorm";
@@ -8,8 +8,13 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/linklist')
-  async getLinkToPublish(): Promise<Link[]> {
-    return await Link.find({where:{PUBLISHED:0}});
+  async getLinkToPublish(@Req() body: any) {
+    return await this.appService.get_link_offset(body);
+  }
+
+  @Get('/linklist/:count')
+  async get_count(@Req() body: any) {
+    return await this.appService.get_count(body.params.count);
   }
 
   @Get('/linklist/all')
