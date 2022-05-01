@@ -22,7 +22,7 @@ describe('AppController (e2e)', () => {
   });
 
   it('get all links',  async () => {
-     const links = await appController.getLinkToPublish();
+     const links = await appController.getLinkToPublish({});
      expect(links).not.toBeUndefined();
      expect(links[links.length-1].ID).not.toBeUndefined()
      expect(links[links.length-1].ID).toEqual(expect.any(Number));

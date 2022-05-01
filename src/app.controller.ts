@@ -1,7 +1,7 @@
 import {Body, Controller, Get, Post, Req} from '@nestjs/common';
 import {AppService} from './app.service';
 import {Link} from "./link/link.entity";
-import {BaseEntity} from "typeorm";
+
 
 @Controller()
 export class AppController {
@@ -20,11 +20,6 @@ export class AppController {
   @Get('/linklist/all')
   async getAllLink(): Promise<Link[]>{
     return await Link.find();
-  }
-
-  @Get('/linklist/publish')
-  async getLinkToPublished(): Promise<BaseEntity | undefined>{
-    return await this.appService.getLinkToPublished()
   }
 
   @Post('/addlink')

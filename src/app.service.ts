@@ -94,8 +94,11 @@ export class AppService {
               .getCount();
           break;
 
+        case 'publish':
+          temp = await this.getLinkToPublished();
+          break;
         default:
-          return {'msg':'0'}
+          return {'msg':'1'}
       }
       return temp;
     }
